@@ -1,0 +1,37 @@
+{
+  "name": "posthtml-include",
+  "version": "1.0.0",
+  "description": "Include file in HTML",
+  "main": "index.js",
+  "dependencies": {
+    "posthtml": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "jscs": "^1.13.1",
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.5"
+  },
+  "scripts": {
+    "test": "npm run lint && mocha",
+    "lint": "jshint . && jscs . -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/posthtml/posthtml-include.git"
+  },
+  "keywords": [
+    "html",
+    "include",
+    "postproccessor",
+    "parser",
+    "transform",
+    "manipulation"
+  ],
+  "author": "Ivan Voischev <voischev.ivan@ya.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/posthtml/posthtml-include/issues"
+  },
+  "homepage": "https://github.com/posthtml/posthtml-include#readme"
+}

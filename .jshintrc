@@ -1,0 +1,8 @@
+{
+    "eqeqeq": true,
+    "expr": true,
+    "maxlen": 120,
+    "undef": true,
+    "unused": true,
+    "node": true
+}
