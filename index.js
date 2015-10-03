@@ -2,7 +2,7 @@ var toTree = require('posthtml/lib/parser').toTree;
 var fs = require('fs');
 var path = require('path');
 
-module.exports = function(options) {
+module.exports = function posthtmlInclude(options) {
     options = options || {};
 
     return function(tree) {
