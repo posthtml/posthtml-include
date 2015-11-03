@@ -42,4 +42,6 @@ posthtml()
 
 ## Options
 
-__encoding__: default `utf-8`
+__root__: Root folder path for include. Default `./`
+
+__encoding__: Default `utf-8`
