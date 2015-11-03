@@ -14,7 +14,9 @@
   },
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "jshint . && jscs . -v"
+    "lint": "jshint . && jscs . -v",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
