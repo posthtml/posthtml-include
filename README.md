@@ -22,7 +22,7 @@ __component/button/button.html__
 
 ```javascript
 var posthtml = require('posthtml'),
-    html = require('fs').writeFileSync('index.html').toString();
+    html = require('fs').readFileSync('index.html').toString();
 
 posthtml()
     .use(require('posthtml-include')({ encoding: 'utf-8' }))
