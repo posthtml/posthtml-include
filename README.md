@@ -10,7 +10,7 @@ __index.html__
     <title>index.html</title>
 </head>
 <body>
-    <include src="component/button/button.html">
+    <include src="component/button/button.html"></include>
 </body>
 </html>
 ```
