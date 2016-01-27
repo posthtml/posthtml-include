@@ -10,7 +10,8 @@
     "chai": "^3.2.0",
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "posthtml": "^0.8.1"
   },
   "scripts": {
     "test": "npm run lint && mocha",
