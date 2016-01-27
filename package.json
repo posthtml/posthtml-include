@@ -1,6 +1,6 @@
 {
   "name": "posthtml-include",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Include file in HTML",
   "main": "index.js",
   "dependencies": {
