@@ -2,7 +2,7 @@ var parser = require('posthtml-parser');
 var fs = require('fs');
 var path = require('path');
 
-module.exports = function (options) {
+module.exports = function(options) {
     options = options || {};
     options.root = options.root || './';
     options.encoding = options.encoding || 'utf-8';
