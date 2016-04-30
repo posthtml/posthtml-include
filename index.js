@@ -11,7 +11,15 @@ module.exports = function(options) {
         tree.match({ tag: 'include' }, function(node) {
             var src = node.attrs.src || false,
                 content;
-            if (src) content = parser(fs.readFileSync(path.resolve(options.root, src), options.encoding));
+            if (src) {
+                src = path.resolve(options.root, src);
+                content = parser(fs.readFileSync(src, options.encoding));
+
+                if (typeof options.addDependencyTo === 'object' &&
+                    typeof options.addDependencyTo.addDependency === 'function') {
+                    options.addDependencyTo.addDependency(src);
+                }
+            }
             return {
                 tag: false,
                 content: content

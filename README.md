@@ -45,3 +45,13 @@ posthtml()
 __root__: Root folder path for include. Default `./`
 
 __encoding__: Default `utf-8`
+
+__addDependencyTo__: An object with addDependency() method, taking file path as an argument. Called whenever a file is included. Default `null`. You can use it for hot-reloading in webpack posthtml-loader like this:
+
+```javascript
+posthtml: function(webpack) {
+  return [
+    require('posthtml-include')({ addDependencyTo: webpack })
+  ]
+}
+```
