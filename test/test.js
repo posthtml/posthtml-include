@@ -33,4 +33,21 @@ describe('Simple test', function() {
             done
         );
     });
+
+    it('addDependencyTo option', function(done) {
+        var includePath = require('path').resolve('./test/blocks/button/button.html');
+
+        function test(filePath) {
+            try {
+                expect(filePath).to.eql(includePath);
+                done();
+            } catch(err) {
+                done(err);
+            }
+        }
+
+        posthtml()
+            .use(plugin({ addDependencyTo: { addDependency: test }}))
+            .process('<include src="./test/blocks/button/button.html">');
+    });
 });
