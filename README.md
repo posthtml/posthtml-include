@@ -1,119 +1,68 @@
+# PostHTML Include <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+
+Include partials into your posthtml templates
+
 [![NPM][npm]][npm-url]
 [![Deps][deps]][deps-url]
 [![Tests][travis]][travis-url]
 [![Coverage][cover]][cover-url]
 
-<div align="center">
-  <img width="220" height="150" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
-  <h1>Include Plugin</h1>
-</div>
-
-<h2 align="center">Install</h2>
+### Install
 
 ```bash
-npm i -D posthtml-include
+npm install posthtml-include --save
 ```
 
-<h2 align="center">Usage</h2>
+### Usage
+
+Given the following input files:
+
+```html
+<!-- index.html -->
+<p>Here's my partial:</p>
+<include src='_partial.html'></include>
+<p>after the partial</p>
+```
+
+```html
+<!-- _partial.html -->
+<strong>hello from the partial!</strong>
+```
+
+Process them with posthtml:
 
 ```js
-const { readFileSync } = require('fs')
-
+const {readFileSync} = require('fs')
 const posthtml = require('posthtml')
-const include = require('include')
+const include = require('posthtml-include')
 
 const html = readFileSync('index.html')
 
-posthtml([ include({ encoding: 'utf8' }) ])
-    .process(html)
-    .then((result) => console.log(result.html))
+posthtml({ plugins: include() })
+  .process(html)
+  .then((result) => console.log(result.output()))
+```
+
+Output:
+
+```html
+<p>Here's my partial:</p>
+<strong>hello from the partial!</strong>
+<p>after the partial</p>
 ```
 
 ### Options
 
-__root__: Root folder path for include. Default `./`
+All options are optional, none are required.
 
-__encoding__: Default `utf-8`
+| Name | Description | Default |
+| ---- | ----------- | ------- |
+| **root** | Root path to resolve the include from | the file's path |
+| **addDependencyTo** | Object with addDependency() method, taking file path as an argument. Called whenever a file is included | |
 
-__addDependencyTo__: An object with addDependency() method, taking file path as an argument. Called whenever a file is included. Default `null`. You can use it for hot-reloading in webpack(posthtml-loader) like this:
+### License
 
-```js
-posthtml: (webpack) => {
-  return [
-    require('posthtml-include')({ addDependencyTo: webpack })
-  ]
-}
-```
-
-<h2 align="center">Usage</h2>
-
-__index.html__
-
-```html
-<html>
-<head>
-    <title>index.html</title>
-</head>
-<body>
-    <include src="components/button.html"></include>
-</body>
-</html>
-```
-
-__components/button.html__
-```html
-<button class="button"><div class="button__text">Button</div></button>
-```
-
-```js
-const { readFileSync } = require('fs')
-
-const posthtml = require('posthtml')
-const include = require('include')
-
-const html = readFileSync('index.html')
-
-posthtml([ include({ encoding: 'utf8' }) ])
-    .process(html)
-    .then((result) => console.log(result.html))
-```
-
-```html
-<html>
-<head>
-  <title>index.html</title>
-</head>
-<body>
-  <button class="button">
-    <div class="button__text">Text</div>
-  </button>
-</body>
-</html>
-```
-
-<h2 align="center">LICENSE</h2>
-
-> MIT License (MIT)
-
-> Copyright (c) PostHTML Ivan Voischev
-
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-> The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Licensed under [MIT](LICENSE)
 
 [npm]: https://img.shields.io/npm/v/posthtml-include.svg
 [npm-url]: https://npmjs.com/package/posthtml-include

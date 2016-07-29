@@ -1,40 +1,37 @@
 {
   "name": "posthtml-include",
+  "description": "Include partials into your posthtml templates",
   "version": "1.1.0",
-  "description": "Include file in HTML",
-  "main": "index.js",
-  "dependencies": {
-    "posthtml-parser": "^0.1.1"
+  "author": "Ivan Voischev <voischev.ivan@ya.ru>",
+  "ava": {
+    "verbose": "true"
+  },
+  "bugs": {
+    "url": "https://github.com/posthtml/posthtml-include/issues"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
-    "jscs": "^1.13.1",
-    "jshint": "^2.8.0",
-    "mocha": "^2.2.5",
-    "posthtml": "^0.8.1"
+    "ava": "^0.15.2",
+    "posthtml": "static-dev/posthtml",
+    "snazzy": "^4.0.0",
+    "standard": "^7.1.2"
   },
-  "scripts": {
-    "test": "npm run lint && mocha",
-    "lint": "jshint . && jscs . -v",
-    "preversion": "npm test",
-    "postversion": "git push && git push --tags"
-  },
+  "homepage": "https://github.com/posthtml/posthtml-include#readme",
+  "keywords": [
+    "html",
+    "include",
+    "manipulation",
+    "parser",
+    "postproccessor",
+    "transform"
+  ],
+  "license": "MIT",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/posthtml/posthtml-include.git"
   },
-  "keywords": [
-    "html",
-    "include",
-    "postproccessor",
-    "parser",
-    "transform",
-    "manipulation"
-  ],
-  "author": "Ivan Voischev <voischev.ivan@ya.ru>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/posthtml/posthtml-include/issues"
-  },
-  "homepage": "https://github.com/posthtml/posthtml-include#readme"
+  "scripts": {
+    "lint": "standard | snazzy",
+    "test": "npm run lint && ava"
+  }
 }
