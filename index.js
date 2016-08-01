@@ -1,4 +1,5 @@
 const {readFileSync} = require('fs')
+const {modifyNodes} = require('posthtml-plugin-util')
 const path = require('path')
 
 module.exports = function (options = {}) {
@@ -7,16 +8,8 @@ module.exports = function (options = {}) {
   }
 
   return function postHtmlInclude (tree, ctx) {
-    return tree.reduce((m, node) => {
-      // bottom-up recurse
-      if (node.type === 'tag' && node.content) {
-        node.content = postHtmlInclude(node.content, ctx)
-      }
-
-      // if it's not an include tag, move on
-      if (node.name !== 'include') { m.push(node); return m }
-
-      // otherwise we have an include tag. if there is no src, throw an error
+    return modifyNodes(tree, (node) => node.name === 'include', (node) => {
+      // if there is no src, throw an error
       if (!(node.attrs && node.attrs.src)) {
         throw new ctx.PluginError({
           message: 'include tag has no "src" attribute',
@@ -36,9 +29,8 @@ module.exports = function (options = {}) {
         options.addDependencyTo.addDependency(includePath)
       }
 
-      // push the new nodes into the tree
-      m = m.concat(includeAst)
-      return m
-    }, [])
+      // return the new nodes
+      return includeAst
+    })
   }
 }

@@ -33,5 +33,8 @@
   "scripts": {
     "lint": "standard | snazzy",
     "test": "npm run lint && ava"
+  },
+  "dependencies": {
+    "posthtml-plugin-util": "^0.1.0"
   }
 }
