@@ -1,5 +1,6 @@
 /* jshint mocha: true, maxlen: false */
 var plugin = require('..');
+var path = require('path');
 var posthtml = require('posthtml');
 var expect = require('chai').expect;
 
@@ -27,15 +28,24 @@ describe('Simple test', function() {
 
     it('root options', function(done) {
         test(
-            '<include src="./button/button.html">',
+            '<include src="./button/button.html"></include>',
             '<div class="button"><div class="button__text">Text</div></div>\n',
             { root: './test/blocks/' },
             done
         );
     });
 
+    it('file not exists', function(done) {
+        test(
+            '<include src="./button/button-not-exists.html"></include>',
+            '<include src="./button/button-not-exists.html"></include>',
+            {},
+            done
+        );
+    });
+
     it('addDependencyTo option', function(done) {
-        var includePath = require('path').resolve('./test/blocks/button/button.html');
+        var includePath = path.resolve('./test/blocks/button/button.html');
 
         function test(filePath) {
             try {
@@ -49,5 +59,54 @@ describe('Simple test', function() {
         posthtml()
             .use(plugin({ addDependencyTo: { addDependency: test }}))
             .process('<include src="./test/blocks/button/button.html">');
+    });
+
+    it('parse option', function(done) {
+        posthtml([
+            plugin({
+                parse: {
+                    parser: require('posthtml-parser'),
+                    filter: function(filePath) { return /button\.html/.test(filePath); }
+                }
+            }),
+            function(tree) {
+                tree.match({ attrs: { 'class': 'button' }}, function(node) {
+                    node.tag = 'button';
+                    return node;
+                });
+            }
+        ]).process('<include src="./test/blocks/button/button.html">').then(function(result) {
+            expect(result.html).to.eql('<button class="button"><div class="button__text">Text</div></button>\n');
+            done();
+        }).catch(function(error) {
+            done(error);
+        });
+    });
+
+    it('parse default options', function(done) {
+        posthtml([
+            plugin(),
+            function(tree) {
+                tree.match({ tag: 'div' }, function() { done(); });
+            }
+        ]).process('<include src="./test/blocks/button/button.html">');
+    });
+
+    it('parse filter option', function(done) {
+        posthtml([
+            plugin({
+                parse: {
+                    parser: require('posthtml-parser'),
+                    filter: function(filePath) {
+                        try {
+                            expect(filePath).to.contain('button.html');
+                            done();
+                        } catch(err) {
+                            done(err);
+                        }
+                    }
+                }
+            })
+        ]).process('<include src="./test/blocks/button/button.html">');
     });
 });

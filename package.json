@@ -4,14 +4,14 @@
   "description": "Include file in HTML",
   "main": "index.js",
   "dependencies": {
-    "posthtml-parser": "^0.1.1"
+    "posthtml-parser": "^0.2.0"
   },
   "devDependencies": {
     "chai": "^3.2.0",
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5",
-    "posthtml": "^0.8.1"
+    "posthtml": "^0.9.1"
   },
   "scripts": {
     "test": "npm run lint && mocha",
