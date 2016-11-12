@@ -45,6 +45,11 @@ posthtml: (webpack) => {
 }
 ```
 
+__parse__: Parser object. An object with parser() name filter() method. 
+    Defaults: 
+        parser: posthtml-parser()
+        filter: /\.html/.test(path)
+
 <h2 align="center">Usage</h2>
 
 __index.html__
