@@ -1,7 +1,13 @@
 # OS
+
 .DS_Store
 ._*
 
 # NODEJS
+
+.nyc_output
+
+coverage
+
 node_modules
 npm-debug.log
