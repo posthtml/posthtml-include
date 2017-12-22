@@ -1,7 +1,13 @@
-node_modules/
-test/
-npm-debug.log
+.gitignore
+.travis.yml
 .editorconfig
 .jscsrc
 .jshintignore
 .jshintrc
+
+npm-debug.log
+
+test/
+coverage/
+.nyc_output/
+node_modules/

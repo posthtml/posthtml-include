@@ -12,9 +12,6 @@ indent_style = space
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{bemjson.js,deps.js}]
-indent_size = 4
-
 [{bower,package}.json]
 indent_size = 2
 

@@ -45,7 +45,6 @@ result.messages = [
   ...
 ]
 ```
-
 > ℹ️ `posthtml-loader >= v1.0.0` adds dependencies to `webpack` automatically
 
 <h2 align="center">Options</h2>
