@@ -18,8 +18,9 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "read-cache": "^1.0.0",
-    "posthtml-parser": "^0.2.1"
+    "chalk": "^2.3.0",
+    "posthtml-parser": "^0.2.1",
+    "read-cache": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.24.0",
