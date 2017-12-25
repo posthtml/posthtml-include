@@ -31,11 +31,11 @@ const html = readFileSync('./src/index.html')
 posthtml([ include() ])
   .process(html, { from: './src/index.html' })
   .then((result) => result.html)
-```
+```  
 
 > :warning: v2.0.0 removes `options.addDependencyTo` in favor of
 
-> ```js
+```js
 result.messages = [
   {
     type: 'dependency',
@@ -44,7 +44,8 @@ result.messages = [
   },
   ...
 ]
-```
+```  
+
 > ℹ️ `posthtml-loader >= v1.0.0` adds dependencies to `webpack` automatically
 
 <h2 align="center">Options</h2>
@@ -57,7 +58,7 @@ result.messages = [
 
 #### `Absolute`
 
-```
+```log
 |– src
 ||– index.html
 ||– components
@@ -65,7 +66,7 @@ result.messages = [
 |
 |– gulpfile.js
 |– package.json
-```
+```  
 
 ```html
 <include src="component.html"</include>
