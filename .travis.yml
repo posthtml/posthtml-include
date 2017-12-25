@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  - "stable"
+  - "lts/*"
+  - 6
+  - 4
+
+after_success:
+  - npm i coveralls
+  - './node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls'
+
+notifications:
+  email: false
