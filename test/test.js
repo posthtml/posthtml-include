@@ -50,4 +50,18 @@ describe('Simple test', function() {
             .use(plugin({ addDependencyTo: { addDependency: test }}))
             .process('<include src="./test/blocks/button/button.html">');
     });
+
+    it('messages dependency for addDependency', function(done) {
+        var includePath = require('path').resolve('./test/blocks/button/button.html');
+
+        posthtml()
+            .use(plugin())
+            .process('<include src="./test/blocks/button/button.html">')
+            .then(function(result) {
+                expect(result.messages[0].file).to.eql(includePath);
+                done();
+            }).catch(function(error) {
+                done(error);
+            });
+    });
 });
