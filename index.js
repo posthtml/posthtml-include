@@ -24,6 +24,13 @@ module.exports = function(options) {
                     ].join("\n"));
                     options.addDependencyTo.addDependency(src);
                 }
+
+                if (tree.messages) {
+                    tree.messages.push({
+                        type: "dependency",
+                        file: src
+                    });
+                }
             }
             return {
                 tag: false,
