@@ -8,14 +8,16 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
+    "istanbul": "^0.4.5",
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5",
     "posthtml": "^0.11.3"
   },
   "scripts": {
-    "test": "npm run lint && mocha",
+    "test": "npm run lint && mocha -R dot && npm run cover",
     "lint": "jshint . && jscs . -v",
+    "cover": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
     "preversion": "npm test",
     "postversion": "git push && git push --tags"
   },
