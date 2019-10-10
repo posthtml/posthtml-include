@@ -1,22 +1,22 @@
 {
   "name": "posthtml-include",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Include file in HTML",
   "main": "index.js",
   "dependencies": {
-    "posthtml-parser": "^0.1.1"
+    "posthtml-parser": "^0.4.1"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
+    "chai": "^4.2.0",
     "istanbul": "^0.4.5",
-    "jscs": "^1.13.1",
+    "jscs": "^3.0.7",
     "jshint": "^2.8.0",
-    "mocha": "^2.2.5",
+    "mocha": "^6.2.1",
     "posthtml": "^0.11.3"
   },
   "scripts": {
     "test": "npm run lint && mocha -R dot && npm run cover",
-    "lint": "jshint . && jscs . -v",
+    "lint": "jshint ./index.js && jscs ./index.js -v",
     "cover": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
     "preversion": "npm test",
     "postversion": "git push && git push --tags"

@@ -90,6 +90,7 @@ posthtml([ include({ encoding: 'utf8' }) ])
 </body>
 </html>
 ```
+> **Note:** Also supports multi nesting.
 
 <h2 align="center">LICENSE</h2>
 

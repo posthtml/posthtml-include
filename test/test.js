@@ -34,6 +34,15 @@ describe('Simple test', function() {
         );
     });
 
+    it('multi includes', function(done) {
+        test(
+            '<h1>index</h1><include src="./includes/1.html"></include>',
+            '<h1>index</h1><h2>1</h2>\n<h2>2</h2>',
+            { root: './test/' },
+            done
+        );
+    });
+
     it('addDependencyTo option', function(done) {
         var includePath = require('path').resolve('./test/blocks/button/button.html');
 

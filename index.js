@@ -9,14 +9,22 @@ module.exports = function(options) {
 
     return function posthtmlInclude(tree) {
         tree.match({ tag: 'include' }, function(node) {
-            var src = node.attrs.src || false,
-                content;
+            var src = node.attrs.src || false;
+            var content;
+            var subtree;
+            var source;
+
             if (src) {
                 src = path.resolve(options.root, src);
-                content = parser(fs.readFileSync(src, options.encoding));
+                source = fs.readFileSync(src, options.encoding);
+                subtree = parser(source);
+                subtree.match = tree.match;
+                content = source.indexOf('include') !== -1? posthtmlInclude(subtree): subtree;
 
-                if (typeof options.addDependencyTo === 'object' &&
-                    typeof options.addDependencyTo.addDependency === 'function') {
+                if (
+                    typeof options.addDependencyTo === 'object' &&
+                    typeof options.addDependencyTo.addDependency === 'function'
+                ) {
                     console.warn([
                         "addDependencyTo is deprecated in favor of",
                         "result.messages.dependency; posthtml-loader >= v1.0.1 will",
