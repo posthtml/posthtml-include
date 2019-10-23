@@ -1,4 +1,3 @@
-var parser = require('posthtml-parser');
 var fs = require('fs');
 var path = require('path');
 
@@ -13,12 +12,12 @@ module.exports = function(options) {
             var content;
             var subtree;
             var source;
-
             if (src) {
                 src = path.resolve(options.root, src);
                 source = fs.readFileSync(src, options.encoding);
-                subtree = parser(source);
+                subtree = tree.parser(source);
                 subtree.match = tree.match;
+                subtree.parser = tree.parser;
                 content = source.indexOf('include') !== -1? posthtmlInclude(subtree): subtree;
 
                 if (tree.messages) {

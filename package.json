@@ -4,7 +4,6 @@
   "description": "Include file in HTML",
   "main": "index.js",
   "dependencies": {
-    "posthtml-parser": "^0.4.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
