@@ -21,18 +21,6 @@ module.exports = function(options) {
                 subtree.match = tree.match;
                 content = source.indexOf('include') !== -1? posthtmlInclude(subtree): subtree;
 
-                if (
-                    typeof options.addDependencyTo === 'object' &&
-                    typeof options.addDependencyTo.addDependency === 'function'
-                ) {
-                    console.warn([
-                        "addDependencyTo is deprecated in favor of",
-                        "result.messages.dependency; posthtml-loader >= v1.0.1 will",
-                        "automatically add your imported files to webpack's file watcher."
-                    ].join("\n"));
-                    options.addDependencyTo.addDependency(src);
-                }
-
                 if (tree.messages) {
                     tree.messages.push({
                         type: "dependency",
