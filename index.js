@@ -1,3 +1,4 @@
+var parser = require('posthtml-parser');
 var fs = require('fs');
 var path = require('path');
 
@@ -7,6 +8,7 @@ module.exports = function(options) {
     options.encoding = options.encoding || 'utf-8';
 
     return function posthtmlInclude(tree) {
+        if (!tree.parser) tree.parser = parser;
         tree.match({ tag: 'include' }, function(node) {
             var src = node.attrs.src || false;
             var content;
