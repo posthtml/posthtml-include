@@ -1,16 +1,18 @@
 {
   "name": "posthtml-include",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Include file in HTML",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "posthtml": "^0.12.0",
+    "posthtml-parser": "^0.4.2"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "istanbul": "^0.4.5",
     "jscs": "^3.0.7",
-    "jshint": "^2.8.0",
-    "mocha": "^6.2.2",
-    "posthtml": "^0.12.0"
+    "jshint": "^2.10.3",
+    "mocha": "^6.2.2"
   },
   "scripts": {
     "test": "npm run lint && mocha -R dot && npm run cover",
