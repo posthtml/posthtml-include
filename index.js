@@ -1,4 +1,5 @@
 var parser = require('posthtml-parser');
+var match = require('posthtml/lib/api').match;
 var fs = require('fs');
 var path = require('path');
 
@@ -9,6 +10,7 @@ module.exports = function(options) {
 
     return function posthtmlInclude(tree) {
         if (!tree.parser) tree.parser = parser;
+        if (!tree.match) tree.match = match;
         tree.match({ tag: 'include' }, function(node) {
             var src = node.attrs.src || false;
             var content;
