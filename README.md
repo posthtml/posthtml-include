@@ -55,14 +55,16 @@ __index.html__
     <title>index.html</title>
 </head>
 <body>
-    <include src="components/button.html"></include>
+    <include src="components/button.html" data='{
+        "text": "Button"
+    }'></include>
 </body>
 </html>
 ```
 
 __components/button.html__
 ```html
-<button class="button"><div class="button__text">Button</div></button>
+<button class="button"><div class="button__text">{{ text }}</div></button>
 ```
 
 ```js
@@ -85,7 +87,7 @@ posthtml([ include({ encoding: 'utf8' }) ])
 </head>
 <body>
   <button class="button">
-    <div class="button__text">Text</div>
+    <div class="button__text">Button</div>
   </button>
 </body>
 </html>
