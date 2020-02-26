@@ -45,6 +45,9 @@ posthtml: (webpack) => {
 }
 ```
 
+### Component options
+__data__: Object containing any local variables that you want to be accessible inside the include component
+
 <h2 align="center">Usage</h2>
 
 __index.html__
