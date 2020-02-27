@@ -12,8 +12,8 @@
     "chai": "^4.2.0",
     "istanbul": "^0.4.5",
     "jscs": "^3.0.7",
-    "jshint": "^2.10.3",
-    "mocha": "^6.2.2"
+    "jshint": "^2.11.0",
+    "mocha": "^7.1.0"
   },
   "scripts": {
     "test": "npm run lint && mocha -R dot && npm run cover",
