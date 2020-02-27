@@ -43,6 +43,15 @@ describe('Simple test', function() {
         );
     });
 
+    it('include with locals', function(done) {
+        test(
+            `<h1>index</h1><include src="./includes/3.html" locals='{"text": 3}'></include>`,
+            `<h1>index</h1><h2>3</h2>`,
+            { root: './test/' },
+            done
+        );
+    });
+
     it('messages dependency for addDependency', function(done) {
         var includePath = require('path').resolve('./test/blocks/button/button.html');
 
