@@ -15,17 +15,17 @@ module.exports = function(options) {
         if (!tree.match) tree.match = match;
         tree.match({ tag: 'include' }, function(node) {
             var src = node.attrs.src || false;
-            var data = node.attrs.data || false;
+            var locals = node.attrs.locals || false;
             var content;
             var subtree;
             var source;
             if (src) {
                 src = path.resolve(options.root, src);
                 source = fs.readFileSync(src, options.encoding);
-                if (data) {
-                    data = JSON.parse(data);
+                if (locals) {
+                    locals = JSON.parse(locals);
                     var result = posthtml()
-                        .use(expressions({ locals: data }))
+                        .use(expressions({ locals: locals }))
                         .process(source, { sync: true });
                     source = result.html;
                 }
