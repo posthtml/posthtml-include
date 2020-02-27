@@ -46,7 +46,7 @@ posthtml: (webpack) => {
 ```
 
 ### Component options
-__data__: Object containing any local variables that you want to be accessible inside the include component
+__locals__: Object containing any local variables that you want to be accessible inside the include component
 
 <h2 align="center">Usage</h2>
 
@@ -58,7 +58,7 @@ __index.html__
     <title>index.html</title>
 </head>
 <body>
-    <include src="components/button.html" data='{
+    <include src="components/button.html" locals='{
         "text": "Button"
     }'></include>
 </body>
