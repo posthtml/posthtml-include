@@ -8,6 +8,7 @@
   "homepage": "https://github.com/posthtml/posthtml-include",
   "repository": "posthtml/posthtml-include",
   "main": "lib",
+  "files" : ["lib"],
   "engines": {
     "node": ">=10"
   },
