@@ -8,7 +8,9 @@
   "homepage": "https://github.com/posthtml/posthtml-include",
   "repository": "posthtml/posthtml-include",
   "main": "lib",
-  "files" : ["lib"],
+  "files": [
+    "lib"
+  ],
   "engines": {
     "node": ">=10"
   },
@@ -32,9 +34,9 @@
     "posthtml-parser": "^0.4.2"
   },
   "devDependencies": {
-    "ava": "^3.5.0",
+    "ava": "^3.6.0",
     "np": "^6.2.0",
-    "nyc": "^15.0.0",
-    "xo": "^0.28.0"
+    "nyc": "^15.0.1",
+    "xo": "^0.28.3"
   }
 }
