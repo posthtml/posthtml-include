@@ -1,68 +1,43 @@
-/* jshint mocha: true, maxlen: false */
-var plugin = require('..');
-var posthtml = require('posthtml');
-var expect = require('chai').expect;
+const test = require('ava')
+const plugin = require('../lib')
+const posthtml = require('posthtml')
 
-function test(input, output, options, done) {
-    posthtml()
-        .use(plugin(options))
-        .process(input)
-        .then(function(result) {
-            expect(output).to.eql(result.html);
-            done();
-        }).catch(function(error) {
-            done(error);
-        });
+const {join} = require('path')
+const {readFileSync} = require('fs')
+
+const fixture = file => readFileSync(join(__dirname, 'fixtures', `${file}.html`), 'utf8')
+const expected = file => readFileSync(join(__dirname, 'expected', `${file}.html`), 'utf8')
+
+const clean = html => html.replace(/[^\S\r\n]+$/gm, '').trim()
+
+const process = (t, name, options, log = false) => {
+  return posthtml([plugin(options)])
+    .process(fixture(name))
+    .then(result => log ? console.log(result.html) : clean(result.html))
+    .then(html => t.is(html, expected(name).trim()))
 }
 
-describe('Simple test', function() {
-    it('default include html', function(done) {
-        test(
-            '<html><head><title>Test</title></head><body><include src="./test/blocks/button/button.html"></body></html>',
-            '<html><head><title>Test</title></head><body><div class="button"><div class="button__text">Text</div></div>\n</body></html>',
-            { encoding: 'utf-8' },
-            done
-        );
-    });
+test('Basic', t => {
+  return process(t, 'basic')
+})
 
-    it('root options', function(done) {
-        test(
-            '<include src="./button/button.html">',
-            '<div class="button"><div class="button__text">Text</div></div>\n',
-            { root: './test/blocks/' },
-            done
-        );
-    });
+test('Root option', t => {
+  return process(t, 'root', {root: './test/fixtures/blocks/'})
+})
 
-    it('multi includes', function(done) {
-        test(
-            '<h1>index</h1><include src="./includes/1.html"></include>',
-            '<h1>index</h1><h2>1</h2>\n<h2>2</h2>',
-            { root: './test/' },
-            done
-        );
-    });
+test('Nested includes', t => {
+  return process(t, 'nested')
+})
 
-    it('include with locals', function(done) {
-        test(
-            `<h1>index</h1><include src="./includes/3.html" locals='{"text": 3}'></include>`,
-            `<h1>index</h1><h2>3</h2>`,
-            { root: './test/' },
-            done
-        );
-    });
+test('Locals', t => {
+  return process(t, 'locals')
+})
 
-    it('messages dependency for addDependency', function(done) {
-        var includePath = require('path').resolve('./test/blocks/button/button.html');
+test('addDependency message', t => {
+  const includePath = require('path').resolve('./test/fixtures/blocks/button/button.html')
 
-        posthtml()
-            .use(plugin())
-            .process('<include src="./test/blocks/button/button.html">')
-            .then(function(result) {
-                expect(result.messages[0].file).to.eql(includePath);
-                done();
-            }).catch(function(error) {
-                done(error);
-            });
-    });
-});
+  return posthtml()
+    .use(plugin())
+    .process('<include src="./test/fixtures/blocks/button/button.html">')
+    .then(result => t.is(result.messages[0].file, includePath))
+})
