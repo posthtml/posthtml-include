@@ -33,6 +33,10 @@ test('Locals', t => {
   return process(t, 'locals')
 })
 
+test('Locals not json', t => {
+  return process(t, 'locals-not-json')
+})
+
 test('addDependency message', t => {
   const includePath = require('path').resolve('./test/fixtures/blocks/button/button.html')
 
