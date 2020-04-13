@@ -37,6 +37,10 @@ test('Locals not json', t => {
   return process(t, 'locals-not-json')
 })
 
+test('Shoult not cut children elements', t => {
+  return process(t, 'not-clear-rest')
+})
+
 test('addDependency message', t => {
   const includePath = require('path').resolve('./test/fixtures/blocks/button/button.html')
 
