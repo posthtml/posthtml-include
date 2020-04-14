@@ -1,6 +1,6 @@
 {
   "name": "posthtml-include",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Include files in HTML",
   "license": "MIT",
   "author": "Ivan Voischev <voischev.ivan@ya.ru>",
