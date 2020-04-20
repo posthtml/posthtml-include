@@ -35,16 +35,6 @@ __root__: Root folder path for include. Default `./`
 
 __encoding__: Default `utf-8`
 
-__addDependencyTo__: An object with addDependency() method, taking file path as an argument. Called whenever a file is included. Default `null`. You can use it for hot-reloading in webpack(posthtml-loader) like this:
-
-```js
-posthtml: (webpack) => {
-  return [
-    require('posthtml-include')({ addDependencyTo: webpack })
-  ]
-}
-```
-
 ### Component options
 __locals__: Object containing any local variables that you want to be accessible inside the include component
 
