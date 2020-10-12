@@ -85,6 +85,18 @@ posthtml([ include({ encoding: 'utf8' }) ])
 </body>
 </html>
 ```
+
+You can also pass your locals directly on the \<include> content, just drop a JSON there. When doing it, all the "\n" chars will be removed from your data.
+If you need "\n" chars on your data, you can still use the "locals" attribute.
+
+```html
+<include src="components/button.html">
+  {
+    "text": "Button"
+  }
+</include>
+```
+
 > **Note:** Also supports multi nesting.
 
 <h2 align="center">LICENSE</h2>

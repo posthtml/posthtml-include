@@ -37,6 +37,18 @@ test('Locals not json', t => {
   return process(t, 'locals-not-json')
 })
 
+test('Inner locals', t => {
+  return process(t, 'inner-locals')
+})
+
+test('Inner locals not json', t => {
+  return process(t, 'inner-locals-not-json')
+})
+
+test('Inner locals big json', t => {
+  return process(t, 'inner-locals-big-json')
+})
+
 test('Shoult not cut children elements', t => {
   return process(t, 'not-clear-rest')
 })
