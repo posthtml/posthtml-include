@@ -16,9 +16,7 @@
   },
   "scripts": {
     "test": "nyc ava",
-    "pretest": "xo",
-    "preversion": "npm test",
-    "postversion": "git push && git push --tags"
+    "pretest": "xo"
   },
   "keywords": [
     "html",
