@@ -27,13 +27,13 @@
     "manipulation"
   ],
   "dependencies": {
-    "posthtml": "^0.13.4",
-    "posthtml-expressions": "^1.6.0",
-    "posthtml-parser": "^0.5.2"
+    "posthtml": "^0.15.1",
+    "posthtml-expressions": "^1.7.1",
+    "posthtml-parser": "^0.7.1"
   },
   "devDependencies": {
-    "ava": "^3.13.0",
+    "ava": "^3.15.0",
     "nyc": "^15.1.0",
-    "xo": "^0.34.2"
+    "xo": "^0.37.1"
   }
 }
