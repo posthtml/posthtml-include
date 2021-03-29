@@ -35,6 +35,8 @@ __root__: Root folder path for include. Default `./`
 
 __encoding__: Default `utf-8`
 
+__posthtmlExpressionsOptions__: Array to pass options posthtml-expression
+
 ### Component options
 __locals__: Object containing any local variables that you want to be accessible inside the include component
 
