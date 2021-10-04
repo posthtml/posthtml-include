@@ -53,6 +53,13 @@ test('Shoult not cut children elements', t => {
   return process(t, 'not-clear-rest')
 })
 
+test('Should merge global locals', t => {
+  return process(t, 'global-variables', {
+    posthtmlExpressionsOptions: {
+      locals: {globalVariable: 'global'}
+    }})
+})
+
 test('addDependency message', t => {
   const includePath = require('path').resolve('./test/fixtures/blocks/button/button.html')
 
