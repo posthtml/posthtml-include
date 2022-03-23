@@ -1,5 +1,5 @@
 const test = require('ava')
-const plugin = require('../lib')
+const plugin = require('../lib/index.js')
 const posthtml = require('posthtml')
 
 const path = require('path')
