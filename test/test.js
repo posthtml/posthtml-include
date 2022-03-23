@@ -60,6 +60,13 @@ test('Should merge global locals', t => {
     }})
 })
 
+test('Should merge global variables and evaluate each local variable', t => {
+  return process(t, 'multiple-include', {
+    posthtmlExpressionsOptions: {
+      locals: {globalVariable: 'global'}
+    }})
+})
+
 test('addDependency message', t => {
   const includePath = require('path').resolve('./test/fixtures/blocks/button/button.html')
 
