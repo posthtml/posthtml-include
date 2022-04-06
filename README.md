@@ -1,6 +1,5 @@
+[![Actions Status][action]][action-url]
 [![NPM][npm]][npm-url]
-[![Deps][deps]][deps-url]
-[![Tests][travis]][travis-url]
 [![Coverage][cover]][cover-url]
 
 <div align="center">
@@ -125,17 +124,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+[action]: https://github.com/posthtml/posthtml-include/workflows/Actions%20Status/badge.svg?style=flat-square
+[action-url]: https://github.com/posthtml/posthtml-include/actions?query=workflow%3A%22CI+tests%22
+
 [npm]: https://img.shields.io/npm/v/posthtml-include.svg
 [npm-url]: https://npmjs.com/package/posthtml-include
-
-[deps]: https://david-dm.org/posthtml/posthtml-include.svg
-[deps-url]: https://david-dm.org/posthtml/posthtml-include
-
-[style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
-[style-url]: http://standardjs.com/
-
-[travis]: http://img.shields.io/travis/posthtml/posthtml-include.svg
-[travis-url]: https://travis-ci.org/posthtml/posthtml-include
 
 [cover]: https://coveralls.io/repos/github/posthtml/posthtml-include/badge.svg?branch=master
 [cover-url]: https://coveralls.io/github/posthtml/posthtml-include?branch=master
