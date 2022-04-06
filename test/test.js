@@ -1,5 +1,5 @@
 const test = require('ava')
-const plugin = require('../lib')
+const plugin = require('../lib/index.js')
 const posthtml = require('posthtml')
 
 const path = require('path')
@@ -55,6 +55,13 @@ test('Shoult not cut children elements', t => {
 
 test('Should merge global locals', t => {
   return process(t, 'global-variables', {
+    posthtmlExpressionsOptions: {
+      locals: {globalVariable: 'global'}
+    }})
+})
+
+test('Should merge global variables and evaluate each local variable', t => {
+  return process(t, 'multiple-include', {
     posthtmlExpressionsOptions: {
       locals: {globalVariable: 'global'}
     }})
