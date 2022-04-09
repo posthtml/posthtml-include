@@ -60,6 +60,13 @@ test('Should merge global locals', t => {
     }})
 })
 
+test('Should override global locals', t => {
+  return process(t, 'override-global-variables', {
+    posthtmlExpressionsOptions: {
+      locals: {globalVariable: 'global'}
+    }})
+})
+
 test('Should merge global variables and evaluate each local variable', t => {
   return process(t, 'multiple-include', {
     posthtmlExpressionsOptions: {
