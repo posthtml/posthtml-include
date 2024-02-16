@@ -30,7 +30,9 @@ posthtml([ include({ encoding: 'utf8' }) ])
 
 ### Options
 
-__root__: Root folder path for include. Default `./`
+__root__: Root directory for include. Default `process.cwd()`
+
+__cwd__: Current working directory for include. Default `process.cwd()`
 
 __encoding__: Default `utf-8`
 
